@@ -15,7 +15,7 @@ export default function LiveMap({data}:{data:AppData}){
  return <div className="map-workspace">
    <MapContainer center={[32.68,-4.74]} zoom={11} scrollWheelZoom className="h-full w-full" zoomControl={false}>
     <TileLayer attribution='&copy; OpenStreetMap contributors' url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-    {data.circuits.slice(0,4).map((c,i)=><Polyline key={c.id} positions={c.stops.map(s=>[s.lat,s.lng])} pathOptions={{color:["#1a9481","#b75a24","#34c0a9","#d18255"][i],weight:4,dashArray:i%2?"8 8":undefined}} />)}
+    {data.circuits.slice(0,4).map((c,i)=><Polyline key={c.id} positions={c.stops.map(s=>[s.lat,s.lng] as [number,number])} pathOptions={{color:["#1a9481","#b75a24","#34c0a9","#d18255"][i],weight:4,dashArray:i%2?"8 8":undefined}} />)}
     {data.circuits.slice(0,4).flatMap(c=>c.stops).map(s=><CircleMarker key={s.id} center={[s.lat,s.lng]} radius={5} pathOptions={{color:"#0d3039",fillColor:"#f8f0e6",fillOpacity:1}}><Popup><b>{s.name}</b><br/>{s.type}</Popup></CircleMarker>)}
     {active.map(m=><Marker key={m.id} position={positions[m.id]??m.position} icon={motoIcon} eventHandlers={{click:()=>setSelected(m.id)}}><Popup>{m.id} · {m.model}<br/>Batterie {m.battery}%</Popup></Marker>)}
    </MapContainer>
