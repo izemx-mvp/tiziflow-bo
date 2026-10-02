@@ -42,3 +42,43 @@
 @media(max-width:980px){.sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:none}.sidebar-scrim{display:none;position:fixed;z-index:29}.sidebar-scrim.open{display:block}.app-main{margin-left:0}.topbar>button:first-child{display:inline-flex}.breadcrumb{display:none}.quick-create{display:none}.global-search{width:auto;flex:1}.dashboard-grid,.overview-grid,.builder-layout,.reports-grid{grid-template-columns:1fr}.fleet-grid,.team-grid{grid-template-columns:repeat(2,1fr)}.finance-summary{grid-template-columns:repeat(2,1fr)}.report-kpis{grid-template-columns:repeat(2,1fr)}.login-page{grid-template-columns:1fr;padding:8vw}.login-intro{display:none}.login-card{max-width:500px;margin:auto;width:100%}.vehicle-detail{grid-template-columns:1fr}.vehicle-photo{min-height:280px}.map-status-strip{left:17px}.map-vehicle-panel{width:300px}.circuit-slot{grid-template-columns:90px 1fr 130px}.circuit-slot>div:nth-child(3),.circuit-slot>.status{display:none}}
 @media(max-width:680px){.content{padding:18px 12px 45px}.topbar{height:58px;padding:0 9px}.topbar>.user-menu,.topbar>button:nth-last-of-type(2){display:none}.page-title{align-items:flex-start;flex-direction:column}.page-title h1{font-size:26px}.page-actions{width:100%;overflow-x:auto}.weather-strip>div:nth-child(n+3){display:none}.weather-strip>div{padding-right:10px;margin-right:10px}.weather-strip button{font-size:0}.weather-strip button svg{margin:0}.kpi-grid{grid-template-columns:repeat(9,155px)}.dashboard-grid{grid-template-columns:1fr}.timeline>button{grid-template-columns:45px 12px 1fr 14px}.timeline i{display:none}.quick-actions-band>div{display:grid;grid-template-columns:1fr 1fr}.table-toolbar{flex-wrap:wrap}.table-search{max-width:none;width:100%;flex-basis:100%}.pagination{align-items:flex-start;gap:8px}.pagination>div button:nth-child(n+4):not(:last-child){display:none}.fleet-summary{grid-template-columns:1fr 1fr}.fleet-grid,.circuit-grid,.service-grid,.team-grid,.promo-grid,.report-kpis,.finance-summary{grid-template-columns:1fr}.detail-hero{height:330px;padding:20px;margin:-18px -12px 0}.detail-hero h1{font-size:28px}.detail-hero p{font-size:11px}.hero-meta{flex-wrap:wrap}.detail-tabs button{flex:none}.capacity-row{grid-template-columns:1fr}.builder-header{align-items:flex-start;gap:10px}.stop-row{grid-template-columns:14px 24px 1fr 28px}.stop-row button:nth-last-child(2),.stop-row button:nth-last-child(3){display:none}.refund-layout{grid-template-columns:1fr}.report-filter{flex-wrap:wrap}.report-filter>.segmented{width:100%;overflow:auto}.report-filter>button{margin-left:0}.form-grid{grid-template-columns:1fr}.quick-modal-grid{grid-template-columns:1fr}.payment-channels{grid-template-columns:1fr}.map-vehicle-panel{left:9px;right:9px;top:9px;width:auto}.map-status-strip{left:9px;right:9px;bottom:9px;overflow-x:auto}.map-status-strip button{min-width:120px}.live-map-shell{height:calc(100vh - 215px)}.wizard-steps small{display:none}.circuit-slot{grid-template-columns:65px 1fr}.circuit-slot>div:nth-child(n+3),.circuit-slot>.status{display:none}.login-page{padding:18px}.login-card{padding:24px}.login-options{align-items:flex-start;gap:8px}.modal-panel{padding:17px}.drawer-summary b{font-size:13px}.profile-actions{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*,:before,:after{scroll-behavior:auto!important;transition-duration:.001ms!important;animation-duration:.001ms!important;animation-iteration-count:1!important}}
+
+/* Refined light canvas, atmospheric signed-in backdrop, and branded scrolling */
+:root:not(.dark){
+  --background:oklch(99.1% .008 78);
+  --card:oklch(99.7% .003 78/.96);
+  --surface:oklch(100% 0 0/.93);
+  --muted:oklch(96.5% .016 78);
+}
+
+*{
+  scrollbar-width:thin;
+  scrollbar-color:var(--terracotta) color-mix(in oklab,var(--sand) 72%,transparent);
+}
+html{scrollbar-gutter:stable}
+*::-webkit-scrollbar{width:9px;height:9px}
+*::-webkit-scrollbar-track{background:color-mix(in oklab,var(--sand) 72%,transparent);border-radius:99px}
+*::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--terracotta),var(--teal));border:2px solid color-mix(in oklab,var(--sand) 72%,transparent);border-radius:99px}
+*::-webkit-scrollbar-thumb:hover{background:var(--teal)}
+
+/* The login artwork remains a clean, uninterrupted photograph. */
+.login-page{background-color:var(--petrol-deep);isolation:isolate}
+.login-page>.environment{display:none}
+
+/* Light mode uses a warm white field instead of a gray wash. */
+.app-shell{background:transparent;isolation:isolate}
+.environment.compact{
+  opacity:1;
+  background:linear-gradient(180deg,oklch(100% 0 0/.8),oklch(98.5% .014 78/.94));
+}
+.environment.compact .sky-glow{background:linear-gradient(180deg,oklch(78% .11 66/.11),transparent 48%)}
+.environment.compact .mountains.far{background:oklch(73% .06 66/.1)}
+.environment.compact .mountains.near{background:oklch(56% .055 170/.08)}
+.environment.compact .terrain{background:linear-gradient(165deg,oklch(76% .075 62/.1),oklch(59% .06 170/.08))}
+.environment.compact .route-line{border-color:oklch(57.3% .137 47.5/.28)}
+.environment.compact .dust{background:var(--terracotta);opacity:.2}
+.dark .environment.compact{opacity:.28;background:transparent}
+.dark .environment.compact .sky-glow{background:linear-gradient(180deg,oklch(64% .1 58/.08),transparent 45%)}
+.dark .environment.compact .mountains.far{background:oklch(50% .045 52/.16)}
+.dark .environment.compact .mountains.near{background:oklch(28.8% .043 219.5/.24)}
+.dark .environment.compact .terrain{background:linear-gradient(165deg,oklch(60% .07 60/.18),oklch(26% .04 219.5/.42))}
