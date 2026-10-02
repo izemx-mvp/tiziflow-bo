@@ -14,7 +14,7 @@ export type Section =
 export interface Circuit { id: string; name: string; duration: string; distance: number; difficulty: string; capacity: number; price: number; image: string; description: string; stops: Stop[] }
 export interface Stop { id: string; name: string; type: string; lat: number; lng: number; duration: number; description: string }
 export interface Customer { id: string; firstName: string; lastName: string; country: string; email: string; phone: string; language: string; reservations: number; spent: number; lastReservation: string; status: string; notes: string }
-export interface Motorcycle { id: string; brand: string; model: string; category: string; battery: number; autonomy: number; mileage: number; status: string; position: [number, number]; acquisition: string; lastMaintenance: string; nextMaintenance: string; reservation?: string; circuit?: string }
+export interface Motorcycle { id: string; brand: string; model: string; category: string; battery: number; autonomy: number; mileage: number; status: string; position: [number, number]; acquisition: string; lastMaintenance: string; nextMaintenance: string; reservation?: string; circuit?: string | undefined }
 export interface Guide { id: string; name: string; role: string; phone: string; email: string; languages: string[]; status: string; excursions: number }
 export interface Reservation { id: string; customerId: string; circuitId: string; activity: string; date: string; time: string; participants: number; motorcycleIds: string[]; guideId: string; total: number; paid: number; paymentStatus: string; status: string }
 export interface Payment { id: string; reservationId: string; customerId: string; channel: "En ligne" | "Carte à l’agence" | "Espèces à l’agence"; amount: number; date: string; reference: string; agent: string; status: string }
@@ -33,7 +33,7 @@ export const circuits: Circuit[] = circuitNames.map((name, i) => {
   const meta = circuitMeta[i] ?? circuitMeta[0];
   const lat = 32.68 + i * .018;
   const lng = -4.75 + (i % 3) * .028;
-  return { id:`CIR-${String(i+1).padStart(3,"0")}`, name, duration:`${meta[0]} h`, distance:meta[1], difficulty:meta[2], capacity:meta[3], price:meta[4], image:circuitImages[i%circuitImages.length] ?? circuitImages[0], description:"Parcours de démonstration inspiré des pistes, vallées et panoramas autour de Midelt. Itinéraire non vérifié à des fins touristiques.", stops:[
+  return { id:`CIR-${String(i+1).padStart(3,"0")}`, name, duration:`${meta[0]} h`, distance:meta[1], difficulty:meta[2], capacity:meta[3], price:meta[4], image:circuitImages[i%circuitImages.length] ?? circuitDecouverte, description:"Parcours de démonstration inspiré des pistes, vallées et panoramas autour de Midelt. Itinéraire non vérifié à des fins touristiques.", stops:[
     {id:`ST-${i}-1`,name:"Base TiziFlow",type:"Départ",lat,lng,duration:15,description:"Briefing et contrôle des équipements"},
     {id:`ST-${i}-2`,name:i%2?"Belvédère de l’Atlas":"Village de montagne",type:i%2?"Panorama":"Village",lat:lat+.045,lng:lng+.032,duration:25,description:"Pause et découverte du paysage"},
     {id:`ST-${i}-3`,name:i%3?"Plateau des nomades":"Oasis de Tatiouine",type:i%3?"Nature":"Oasis",lat:lat+.068,lng:lng-.012,duration:30,description:"Étape nature et rafraîchissements"},
