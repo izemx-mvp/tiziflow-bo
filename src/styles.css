@@ -82,3 +82,5 @@ html{scrollbar-gutter:stable}
 .dark .environment.compact .mountains.far{background:oklch(50% .045 52/.16)}
 .dark .environment.compact .mountains.near{background:oklch(28.8% .043 219.5/.24)}
 .dark .environment.compact .terrain{background:linear-gradient(165deg,oklch(60% .07 60/.18),oklch(26% .04 219.5/.42))}
+.sidebar-scrim{display:none}
+@media(max-width:980px){.sidebar-scrim.open{display:block}}
