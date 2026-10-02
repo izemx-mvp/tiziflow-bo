@@ -1,3 +1,9 @@
+import circuitDecouverte from "@/assets/circuit-decouverte.png";
+import circuitPanorama from "@/assets/circuit-panorama.png";
+import circuitVallee from "@/assets/circuit-vallee.png";
+import circuitSunset from "@/assets/circuit-sunset.png";
+import circuitTraversee from "@/assets/circuit-traversee.png";
+
 export type StatusTone = "success" | "warning" | "danger" | "info" | "neutral";
 export type Role = "Admin" | "Responsable" | "Guide" | "Fleet Manager";
 export type Section =
@@ -20,7 +26,7 @@ export interface Incident { id: string; type: string; date: string; motorcycleId
 export interface Activity { id: string; user: string; action: string; entity: string; date: string; previous: string; next: string }
 export interface AppData { customers: Customer[]; motorcycles: Motorcycle[]; guides: Guide[]; circuits: Circuit[]; reservations: Reservation[]; payments: Payment[]; complaints: Complaint[]; maintenance: Maintenance[]; services: Service[]; promotions: Promotion[]; incidents: Incident[]; activity: Activity[] }
 
-const circuitImages = ["/assets/circuit-decouverte.png", "/assets/circuit-panorama.png", "/assets/circuit-vallee.png", "/assets/circuit-sunset.png", "/assets/circuit-traversee.png"];
+const circuitImages = [circuitDecouverte, circuitPanorama, circuitVallee, circuitSunset, circuitTraversee];
 const circuitNames = ["Boucle Découverte de Midelt", "Panorama des Crêtes", "Vallée et Villages", "Coucher de Soleil en Montagne", "Grande Traversée", "Aventure Électrique de Midelt", "Oasis & Montagnes", "Nature & Panoramas"];
 const circuitMeta = [[3,42,"Facile",8,680],[4,58,"Modérée",7,890],[5,64,"Modérée",8,960],[3,38,"Facile",6,740],[7,96,"Sportive",6,1380],[4,52,"Modérée",8,820],[6,76,"Sportive",7,1120],[5,69,"Modérée",8,990]] as const;
 export const circuits: Circuit[] = circuitNames.map((name, i) => {
